@@ -27,3 +27,18 @@
 (define (prepend-every item list)
   (map (lambda (choice) (se item choice)) list))
 
+
+(define (combinations size set)
+  (cond ((= size 0) '(()))
+        ((empty? set) '())
+        (else (append (prepend-every (first set)
+                                     (combinations (- size 1)
+                                                   (butfirst set)))
+                      (combinations size (butfirst set))))))
+
+
+(define (factorial n)
+  (if (= n 0)
+      1
+      (* n (factorial (- n 1)))))
+

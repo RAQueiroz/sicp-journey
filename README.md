@@ -4,7 +4,7 @@ I'll read the classic book [SICP](https://mitpress.mit.edu/sites/default/files/s
 
 ## My Progress
 
-1. Simply Scheme
+1. [Simply Scheme](http://people.eecs.berkeley.edu/~bh/ss-toc2.html)
 - [] I. Introduction: Functions (HTML)
 - [] II. Composition of Functions (HTML)
 - [] III. Functions as Data (HTML)
@@ -26,6 +26,7 @@ I'm using tha Racket language with the following packages:
 
 1. [SICP 'Language'](https://docs.racket-lang.org/sicp-manual/Contributors.html)
 2. [Simply Scheme](https://docs.racket-lang.org/manual@simply-scheme/index.html)
+3. [Programs](ftp://ftp.cs.berkeley.edu/pub/scheme)
 
 
 
