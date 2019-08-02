@@ -1,2 +1,11 @@
 Function Domain: the thing that a function accepts as an argument
 Function Range: the things that a function returns
+
+"A function embodies a transformation of information"
+
+A function can be either a process or an object wich can be an argument to other functions.
+
+The define keyword in schme is a special form. It's not a function.
+
+
+	
