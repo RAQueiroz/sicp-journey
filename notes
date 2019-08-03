@@ -7,5 +7,9 @@ A function can be either a process or an object wich can be an argument to other
 
 The define keyword in schme is a special form. It's not a function.
 
+Abstraction: giving a pattern a name.
+After naming a pattern we can use that idea without thinking abaout it's pieces.
 
-	
+The substitution model: when we invoke an user defined procedure the language will make a copy of the body of this procedure and replace all the arguments by the correspondent parameters.
+
+
