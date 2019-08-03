@@ -5,7 +5,7 @@ I'll read the classic book [SICP](https://mitpress.mit.edu/sites/default/files/s
 ## My Progress
 
 1. [Simply Scheme](http://people.eecs.berkeley.edu/~bh/ss-toc2.html)
-[x] I. Introduction: Functions (HTML)
+- [x] I. Introduction: Functions (HTML)
 - [] II. Composition of Functions (HTML)
 - [] III. Functions as Data (HTML)
 - [] IV. Recursion (HTML)
