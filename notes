@@ -12,4 +12,6 @@ After naming a pattern we can use that idea without thinking abaout it's pieces.
 
 The substitution model: when we invoke an user defined procedure the language will make a copy of the body of this procedure and replace all the arguments by the correspondent parameters.
 
+Predicate: A function that returns either T or F. In scheme predicates names by convention end with a question mark.
 
+Truthy and falsy applies in scheme.

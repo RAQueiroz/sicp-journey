@@ -113,3 +113,115 @@
 '(you know my name (look up the number))
 
 
+;5.9  Figure out what values each of the following will return before you try them on the computer:
+
+(se (word (bl (bl (first '(make a))))
+          (bf (bf (last '(baseball mitt)))))
+    (word (first 'with) (bl (bl (bl (bl 'rigidly))))
+          (first 'held) (first (bf 'stitches))))
+
+(se (word (bl (bl 'bring)) 'a (last 'clean))
+    (word (bl (last '(baseball hat))) (last 'for) (bl (bl 'very))
+	  (last (first '(sunny days)))))
+
+;5.10  What kinds of argument can you give butfirst so that it returns a word? A sentence?
+; a word
+
+;5.11  What kinds of argument can you give last so that it returns a word? A sentence?
+; both words and sentences
+
+;5.12  Which of the functions first, last, butfirst, and butlast can return an empty word?
+;For what arguments? What about returning an empty sentence?
+;
+; bf an bl returns a empty word when given a single character word and an empty sentence when given
+; a sentence with only one word
+;
+
+;5.13  What does ' 'banana stand for?
+; It's a word "literal"
+
+;What is (first ' 'banana) and why?
+; 'quote I've no idea since first arity is 1 and with other examples it throws an error
+; but in this case it returned the 'quote special form
+
+;5.14  Write a procedure third that selects the third letter of a word (or the third word of a sentence).
+
+(define (third txt)
+  (item 3 txt))
+
+;5.15  Write a procedure first-two that takes a word as its argument, returning a two-letter word
+;containing the first two letters of the argument.
+
+(define (first-two wd)
+  (word (first wd) (first (bf wd))))
+
+(first-two 'ambulatory)
+;AM
+
+;5.16  Write a procedure two-first that takes two words as arguments, returning a two-letter word
+;containing the first letters of the two arguments.
+
+(define (two-first wd1 wd2)
+  (word (first wd1) (first wd2)))
+
+(two-first 'brian 'epstein)
+;BE
+
+;5.17  Write a procedure knight that takes a person's name as its argument and returns the name
+;with "Sir" in front of it.
+
+(define (knight name)
+  (se 'Sir name))
+
+(knight '(david wessel))
+;(SIR DAVID WESSEL)
+
+; 5.18  Try the following and explain the result:
+
+;(define (ends word)
+;  (word (first word) (last word)))
+
+; the procedure word was subscribed by the argument word in this procedure
+; the correct should be
+
+(define (ends wd)
+  (word (first wd) (last wd)))
+(ends 'john)
+
+;5.19  Write a procedure insert-and that takes a sentence of items and returns
+;a new sentence with an "and" in the right place:
+
+(define (insert-and sent)
+  (se (bl sent) 'and (last sent)))
+
+(insert-and '(john bill wayne fred joey))
+;(JOHN BILL WAYNE FRED AND JOEY)
+
+;5.20  Define a procedure to find somebody's middle names:
+
+(define (middle-names sent)
+  (bf (bl sent)))
+
+(middle-names '(james paul mccartney))
+;(PAUL)
+
+(middle-names '(john ronald raoul tolkien))
+;(RONALD RAOUL)
+
+(middle-names '(bugs bunny))
+;()
+
+(middle-names '(peter blair denis bernard noone))
+;(BLAIR DENIS BERNARD)
+
+;5.21  Write a procedure query that turns a statement into a question
+;by swapping the first two words and adding a question mark to the last word:
+
+(define (query sent)
+  (se (item 2 sent) (item 1 sent) (bf (bf sent)) '?))
+
+(query '(you are experienced))
+;(ARE YOU EXPERIENCED?)
+
+(query '(i should have known better))
+;(SHOULD I HAVE KNOWN BETTER?)
