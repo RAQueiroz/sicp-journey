@@ -143,9 +143,12 @@
 (define (valid-date? m d y)
   (if (between? m 0 13)
       (if (between? d 0 32)
-          #t
-          #f)
-      #f))
+          (or (and (member? m '(1 3 5 7 8 10 12))
+                       (between? d 0 32))
+              (and (member? m '(4 6 9 11))
+                       (between? d 0 31))
+              (between? d 0 (+ 1 (feb-days y))))
+         #f)#f))
 
 (valid-date? 10 4 1949)
 ;#T
@@ -162,8 +165,67 @@
 (valid-date? 2 29 2000)
 ;#T
 
-;6.12  Make plural handle correctly words that end in y but have a vowel before the y, such as boy. Then teach it about words that end in x (box). What other special cases can you find?
+;6.12  Make plural handle correctly words that end in y but have a vowel before the y, such as boy.
+;Then teach it about words that end in x (box). What other special cases can you find?
 
+(define (pluralize wd)
+  (cond
+    ((equal? (word (last (bl wd)) (last wd)) 'us) (word (bl (bl wd)) 'i))
+    ((equal? (word (last (bl wd)) (last wd)) 'is) (word (bl (bl wd)) 'es))
+    ((equal? (word (last (bl wd)) (last wd)) 'on) (word (bl (bl wd)) 'a))
+    ((member?
+      (if (not (vowel? (last (bl wd))))
+          (word (last (bl wd)) (last wd))
+          (last wd))
+          '(s ss sh ch x z tz))
+         (word wd 'es))
+    ((or (equal? (last wd) 'f)
+         (equal? (word (last (bl wd)) (last wd)) 'fe))
+       (cond ((member? wd '(roof belief chef chief)) (word wd 's))
+             ((equal? (last wd) 'f) (word (bl wd) 'ves))
+             (else (word (bl (bl wd)) 'ves))))
+    ((equal? (last wd) 'y)
+     (if (vowel? (last (bl wd)))
+         (word wd 's)
+         (word (bl wd) 'ies)))
+    ((equal? (last wd) 'o)
+     (if (member? wd '(photo piano halo))
+         (word wd 's)
+         (word wd 'es)))
+    (else (word wd 's))))
+  
+(pluralize 'truss)
+;trusses
+(pluralize 'bus)
+;buses
+(pluralize 'marsh)
+;marshes
+(pluralize 'lunch)
+;lunches
+(pluralize 'tax)
+;taxes
+(pluralize 'blitz)
+;blitzes
+(pluralize 'wife)
+;wives
+(pluralize 'wolf)
+;wolves
+(pluralize 'roof)
+;roofs
+(pluralize 'puppy)
+;puppies
+(pluralize 'ray)
+;rays
+(pluralize 'potato)
+;potatoes
+(pluralize 'photo)
+;photos
+(pluralize 'cactus)
+;cacti
+(pluralize 'analysis)
+;analyses
+(pluralize 'phenomenon)
+;phenomena
 
 ;6.13  Write a better greet procedure that understands as many different kinds of names as you can think of:
 
