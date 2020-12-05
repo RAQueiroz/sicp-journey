@@ -24,7 +24,7 @@ I'll read the classic book [SICP](https://mitpress.mit.edu/sites/default/files/s
 
 I'm using tha Racket language with the following packages:
 
-1. [SICP 'Language'](https://docs.racket-lang.org/sicp-manual/Contributors.html)
+1. [SICP 'Language'](https://docs.racket-lang.org/sicp-manual/Installation.html)
 2. [Simply Scheme](https://docs.racket-lang.org/manual@simply-scheme/index.html)
 3. [Programs](ftp://ftp.cs.berkeley.edu/pub/scheme)
 
